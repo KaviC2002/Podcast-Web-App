@@ -1,0 +1,39 @@
+<nav>
+    <div class="navbar">
+        <ul>
+            <img id="logo" src="../static/podcastlogo.png"  alt="Podcast Logo"/>
+            <li><a href="{{ url_for('home_bp.home') }}">Home</a></li>
+            <li><a href="{{ url_for('browse_bp.browse_podcasts') }}">Podcasts</a></li>
+            <li><a href="{{ url_for('playlist_bp.show_playlists') }}">Playlist</a></li>
+            <div id="login-header">
+                {% if 'user_name' not in session %}
+                    <li><a href="{{ url_for('authentication_bp.login') }}">Login</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('authentication_bp.logout') }}">Logout</a></li>
+                {% endif %}
+                <h2 id="nav-header">
+                    {% if 'user_name' in session %}
+                        <a href="{{ url_for('authentication_bp.login') }}" target="_blank">
+                            <img src="../static/profile-icon.png" alt="profile photo"><i></i>
+                        </a>
+                    {% endif %}
+                </h2>
+            </div>
+            <li>
+                <form id="search-container" action="{{ url_for('search_bp.search_results') }}" method="GET">
+                    <label>
+                        <input type="text" name="query" placeholder="Search podcasts...">
+                    </label>
+                    <label>
+                        <select name="filter">
+                            <option value="title">Title</option>
+                            <option value="category">Category</option>
+                            <option value="author">Author</option>
+                        </select>
+                    </label>
+                    <button type="submit">Search</button>
+                </form>
+            </li>
+        </ul>
+    </div>
+</nav>

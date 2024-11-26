@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Podcast Description</title>
+    <link rel="stylesheet" href="../static/css/main.css" />
+</head>
+
+<body class="allow-scroll">
+    {% include 'navbar.html' %}
+    <div id="content-2">
+        <div id="container">
+             <main id="main-description-page">
+                 <div id="description-page">
+                     <div id="description-container">
+                         <img src="{{ podcast.image }}" alt="Podcast Image" id="podcast-image-description">
+                         <div id="description">
+                             <p id="title-description"><i></i> {{ podcast.title }} </p>
+                             <p><i>Author:</i> {{ podcast.author.name }} </p>
+                             <p><i>Language:</i> {{ podcast.language }}</p>
+                             <p><i>Categories:</i> {{ podcast.categories | map(attribute='name') | join(', ') }} </p>
+                             <p><i>Website:</i> <a href="{{ podcast.website }}" target="_blank">{{ podcast.website }}</a></p>
+                             <p><i>iTunes ID:</i> {{ podcast.itunes_id }}</p>
+                             <p id="about-description"><i></i> {{ podcast.description }}</p>
+                             <td>
+                                <form id="description_add" action="{{ url_for('playlist_bp.add_to_playlist_route') }}" method="POST">
+                                    <input type="hidden" name="podcast_id" value="{{ podcast.id }}">
+                                    <button type="submit">Add to Playlist</button>
+                                </form>
+                            </td>
+                         </div>
+                     </div>
+
+                    <div id="rating-section">
+                         <div id="average-rating">
+                             <p>Average Rating: {% if average_rating is not none %}{{ average_rating }} / 5{% else %}N/A{% endif %}</p>
+                         </div>
+
+                         <form id="form-rating" method="POST" action="{{ url_for('description_bp.submit_review', podcast_id=podcast.id) }}">
+                             <div class="star-rating">
+                                <input type="radio" id="star5" name="rating" value="5"><label for="star5" title="5 stars"></label>
+                                <input type="radio" id="star4" name="rating" value="4"><label for="star4" title="4 stars"></label>
+                                <input type="radio" id="star3" name="rating" value="3"><label for="star3" title="3 stars"></label>
+                                <input type="radio" id="star2" name="rating" value="2"><label for="star2" title="2 stars"></label>
+                                <input type="radio" id="star1" name="rating" value="1"><label for="star1" title="1 star"></label>
+                             </div>
+                             <textarea name="comment" placeholder="Write your review..." required></textarea>
+                             <button id="submit-rating" type="submit">Submit Review</button>
+                         </form>
+                    </div>
+
+                     <div id="reviews">
+                         {% if reviews %}
+                         <label>{{ reviews|length }} review(s)</label>
+                         <ul id="reviews_ul">
+                             {% for review in reviews %}
+                             <li id="reviews_li">
+                                 <strong>{{ review.user.username }}</strong> - Rated: {{ review.rating }} / 5
+                                 <p>{{ review.content }}</p>
+                                 <small>{{ review.timestamp }}</small>
+                             </li>
+                             {% endfor %}
+                         </ul>
+                         {% else %}
+                             <p>No reviews yet.</p>
+                         {% endif %}
+                     </div>
+                 </div>
+                 <div id="episodes">
+                     <h2 id="title-episodes">Episodes</h2>
+                     <div id="episode-container">
+                         {% if episodes %}
+                             {% for episode in episodes %}
+                                 <div class="episode-item">
+                                     <a href="{{ url_for('episode_bp.show_episode_description', episode_id=episode.id) }}">
+                                         <img src="{{ podcast.image }}" alt="Episode Image">
+                                         <div class="episode-info">
+                                             <h3>{{ episode.title }}</h3>
+                                             <p>{{ episode.audio }}</p>
+                                             <p>{{ episode.pub_date }}</p>
+                                             <p>{{ episode.length }}</p>
+                                         </div>
+                                     </a>
+                                 </div>
+                             {% endfor %}
+                         {% else %}
+                             <p>No episodes available.</p>
+                         {% endif %}
+                     </div>
+                 </div>
+                 <!-- Pagination controls -->
+                 {% if total_pages > 1 %}
+                     <div id="pagination">
+                         {% if prev_page %}
+                             <a href="{{ url_for('description_bp.show_podcast_description', podcast_id=podcast.id, page=prev_page) }}">Previous</a>
+                         {% endif %}
+                         {% for i in range(start_page, end_page + 1) %}
+                             {% if i == page %}
+                                 <strong>{{ i }}</strong>
+                             {% else %}
+                                 <a href="{{ url_for('description_bp.show_podcast_description', podcast_id=podcast.id, page=i) }}">{{ i }}</a>
+                             {% endif %}
+                         {% endfor %}
+                         {% if next_page %}
+                             <a href="{{ url_for('description_bp.show_podcast_description', podcast_id=podcast.id, page=next_page) }}">Next</a>
+                         {% endif %}
+                     </div>
+                 {% endif %}
+             </main>
+         </div>
+        <footer id="footer-description">
+            CS235 Kavi Chand - kcha612, Henry Song - cson299, Natsuki - nkom215
+        </footer>
+    </div>
+</body>
+</html>

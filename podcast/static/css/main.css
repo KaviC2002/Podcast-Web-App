@@ -1,0 +1,970 @@
+/*---------------------------------------------------------*/
+/* Global Styles */
+/*---------------------------------------------------------*/
+
+* {
+  margin: 0;
+  padding: 0;
+  color: white;
+  box-sizing: border-box;
+    list-style: none;
+  text-decoration: none;
+  font-family: Verdana;
+}
+
+body {
+    position: relative;
+    background: url('podcast1.webp');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 200px;
+    overflow: hidden;
+    width: 100%;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgb(0, 0, 0, 0.85);
+    z-index: 1;
+}
+
+#container, nav, #footer, #header, form, .formwrapper, h1, #welcome_statement, main, #content-2 {
+    position: relative;
+    z-index: 2;
+}
+
+.allow-scroll {
+    overflow: auto;
+}
+
+h1 {
+    text-align: center;
+    font-weight: bold;
+}
+
+/*---------------------------------------------------------*/
+/* Logo Styles */
+/*---------------------------------------------------------*/
+
+#logo {
+    display: flex;
+    width: 300px;
+}
+
+/*---------------------------------------------------------*/
+/* Navbar Styles */
+/*---------------------------------------------------------*/
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+    margin: 30px;
+    background-color: #642dad;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    border-radius: 100px;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+nav ul li:hover a {
+    color: black;
+}
+
+/*Search styles*/
+#search-container {
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#search-container input[type="text"]{
+    width: 400px;
+    padding: 15px;
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+}
+
+#search-container select {
+    padding: 10px 10px;
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+}
+
+#search-container button {
+    padding: 15px 30px;
+    font-size: 15px;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px outset black;
+}
+
+#search-container button:hover {
+    background-color: royalblue;
+    color: white;
+}
+
+#login-header{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    right: 0;
+}
+
+#login-header li a{
+    background-color: royalblue;
+    padding: 20px;
+    color: white;
+    border-radius: 50px;
+    margin-left: 0;
+}
+
+#login-header li a:hover{
+    background-color: rgb(255,255,255,0.5);
+    color: white;
+}
+
+#login-header h2{
+    display: block;
+    align-content: center;
+}
+
+#login-header h2 img {
+    display: block;
+    width: 80%;
+}
+
+#login-header h2 img:hover {
+    background-color: royalblue;
+    border-radius: 50%;
+}
+
+/*---------------------------------------------------------*/
+/* Footer Styles */
+/*---------------------------------------------------------*/
+
+#footer {
+    padding: 20px;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    border-top: 2px solid #e0e4e8;
+}
+
+/*---------------------------------------------------------*/
+/* Header Styles */
+/*---------------------------------------------------------*/
+
+#header {
+    display: block;
+    font-size: 70px;
+    font-weight: normal;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/*---------------------------------------------------------*/
+/* Content Container Styles (General) */
+/*---------------------------------------------------------*/
+
+#content-2 {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#welcome_statement {
+    display: block;
+    align-items: center;
+    text-align: center;
+    font-size: 25px;
+    padding: 30px;
+    width: 60%;
+    border-top: 2px solid #e0e4e8;
+    border-bottom: 2px solid #e0e4e8;
+}
+
+#container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*---------------------------------------------------------*/
+/* Podcast List Styles (Catalogue Page) */
+/*---------------------------------------------------------*/
+
+.filters {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 380px 50px;
+    padding: 10px;
+    max-width: 12%;
+    height: 23%;
+    background-color: #642dad;
+    border-radius: 15px;
+}
+
+.filters select {
+    padding: 15px;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 25px;
+}
+
+.filters option {
+    max-width: 12%;
+}
+
+.filters div {
+    color: #000000;
+    padding: 15px;
+    font-size: 12px;
+    background-color: white;
+    margin-bottom: 30px;
+    border-radius: 5px;
+}
+
+
+#main-catalogue {
+    border-top: 2px solid white;
+    padding: 20px;
+}
+
+table {
+    margin-top: 50px;
+    border-collapse: separate;
+    border-spacing: 0 30px;
+    margin-left: 300px;
+    margin-right: 50px;
+    border-radius: 10px;
+}
+
+#podcast-table{
+    background-color: rgb(65, 58, 67);
+    box-shadow: 0 0 15px rgb(255,255,255, 0.8);
+}
+
+
+th {
+    font-weight: normal;
+    text-align: left;
+    font-size: 18px;
+    padding-right: 40px;
+    border-bottom: 5px solid white;
+    padding-bottom: 5px;
+}
+
+
+td {
+
+
+    padding-right: 20px;
+    text-align: center;
+}
+
+#catalogue-podcast-image{
+    max-width: 50%;
+    border-radius: 20px;
+    border: 3px solid white;
+    margin: 20px;
+ }
+
+#podcast-table td form{
+    background-color: transparent;
+}
+
+button {
+    padding: 5px 10px;
+    background-color: #642dad;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: white;
+    color: black;
+}
+
+/*---------------------------------------------------------*/
+/* Podcast Description Styles */
+/*---------------------------------------------------------*/
+
+#description p i {
+    font-weight: bold;
+}
+
+.copyright {
+  color: #f1f1f1;
+  font-size: 0.3em;
+}
+
+/*---------------------------------------------------------*/
+/* Podcast Grid Styles */
+/*---------------------------------------------------------*/
+
+#podcast-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-row-gap: 50px;
+    grid-column-gap: 150px;
+
+  margin: 60px auto;
+  max-width: 80%;
+    padding: 50px 150px;
+    background-color: rgb(65, 58, 67, 0.9);
+    border-radius: 80px;
+    border: 2px solid white;
+    opacity: 1;
+
+}
+
+.podcast-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  text-align: center;
+    border-radius: 80px;
+    border-color: white;
+}
+
+.podcast-item img {
+    border-radius: 25%;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+    padding: 6px;
+    background-color: whitesmoke;
+}
+
+.podcast-info {
+  padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 15px;
+}
+
+.podcast-info h3 {
+  margin: 5px 0;
+  font-size: 1.2em;
+  font-weight: normal;
+  color: white;
+}
+
+.podcast-info p {
+  font-size: 0.9em;
+  color: #ccc;
+}
+
+/*---------------------------------------------------------*/
+/* Pagination Controls */
+/*---------------------------------------------------------*/
+
+#pagination {
+    text-align: center;
+    margin: 20px 0;
+}
+
+#pagination a, #pagination strong {
+    margin: 0 5px;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #642dad;
+    border-radius: 5px;
+}
+
+#pagination a:hover {
+    background-color: #404040;
+}
+
+#pagination strong {
+    font-weight: bold;
+    background-color: #ddd;
+    color: #000;
+}
+
+/*---------------------------------------------------------*/
+/* Podcast Description Container */
+/*---------------------------------------------------------*/
+
+#main-description-page{
+    width: 100%;
+    display: block;
+    flex-direction: column;
+}
+
+#description-page {
+    width: 100%;
+    margin-top: 30px;
+    background-color: rgb(65, 58, 67, 0.95);
+    border-top: 3px solid white;
+    border-bottom: 3px solid transparent;
+}
+
+#description-container {
+    display: flex;
+    align-items: center;
+    border-radius: 80px;
+    margin: 30px 80px;
+}
+
+#podcast-image-description {
+    width: 25%;
+    height: auto;
+    margin-right: 50px;
+    border-radius: 50px;
+    border: 2px solid white;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+#description {
+    width: 60%;
+    color: #fff;
+    line-height: 2;
+    text-align: left;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+#title-description{
+    font-size: 50px;
+    text-decoration: 2px underline;
+}
+
+#about-description {
+    margin-top: 30px;
+    font-size: 20px;
+    padding: 30px 10px;
+    border-radius: 10px;
+    border-bottom: 1px solid white;
+    border-top: 1px solid white;
+}
+
+#description p {
+    line-height: 1.5;
+}
+
+#description p i {
+    font-weight: normal;
+}
+
+#description p a {
+    color: royalblue;
+    text-decoration: none;
+}
+
+#description p a:hover {
+    text-decoration: underline;
+}
+
+
+/*---------------------------------------------------------*/
+/* Review Styles */
+/*---------------------------------------------------------*/
+
+#reviews {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px auto 50px;
+    width: 60%;
+    padding: 20px;
+    background-color: rgb(64,64,64,0.8);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+#average-rating {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+.star-rating label:before {
+    content: "\2605";
+    font-size: 25px;
+    color: white;
+}
+
+.star-rating input[type="radio"] {
+    display: none;
+}
+
+.star-rating label {
+    cursor: pointer;
+    margin: 15px;
+    padding: 7px;
+    border-radius: 10px;
+    transition: color 0.2s ease-in-out;
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label,
+.star-rating input[type="radio"]:checked ~ label {
+    background-color: goldenrod;
+}
+
+
+#rating-section{
+    display: block;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 30px;
+    padding: 20px;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    border-radius: 30px;
+}
+
+#form-rating {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    background-color: transparent;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+    min-height: 100px;
+    color: black;
+}
+
+button#submit-rating {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    background-color: #642dad;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button#submit-rating:hover {
+    background-color: #563d7c;
+}
+
+
+#reviews_ul {
+    list-style-type: none;
+    padding: 0;
+    font-size: 20px;
+    width: 100%;
+}
+
+#reviews_li {
+    padding: 10px;
+    border-bottom: 3px outset black;
+    margin-top: 10px;
+}
+
+#reviews_li p{
+    padding-top: 20px;
+    padding-left: 20px;
+    width: 60%;
+    border-top: 1px solid white;
+    font-size: 20px;
+}
+
+#reviews_li:last-child {
+    border-bottom: none;
+}
+
+#reviews_li strong {
+    color: royalblue;
+}
+
+#reviews_li small {
+    display: block;
+    text-align: right;
+    color: white;
+    font-size: 12px;
+}
+
+
+/*---------------------------------------------------------*/
+/* Episode Grid Styles */
+/*---------------------------------------------------------*/
+
+#episodes{
+    width: 100%;
+    background-color: rgb(65, 58, 67, 0.95);
+    margin: 0;
+}
+
+#title-episodes{
+    padding-top: 100px;
+    margin-left: 10%;
+    text-align: left;
+    font-size: 40px;
+    font-weight: normal;
+    border-bottom: 3px solid white;
+    width: 80%;
+}
+
+#episode-container {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.episode-item {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px auto 30px 20%;
+    background-color: rgb(102,45,173, 0.85);
+    box-shadow: 0 0 20px rgba(0,0,0,0.7);
+}
+
+.episode-item img {
+    width: 20%;
+    height: auto;
+    border-radius: 10px;
+    margin: 10px;
+    border: 2px solid white;
+}
+
+.episode-info {
+    flex: 2;
+    padding: 10px;
+    color: #ffffff;
+}
+
+.episode-info h3 {
+    margin: 10px 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 5px;
+    border-bottom: 1px outset white;
+}
+
+.episode-info p {
+    line-height: 2;
+    font-size: 14px;
+}
+
+
+#footer-description{
+    width: 100%;
+    padding: 20px;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    border-top: 3px solid #e0e4e8;
+}
+
+
+/*---------------------------------------------------------*/
+/* Episode Description styles */
+/*---------------------------------------------------------*/
+
+#episode-description-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(65, 58, 67, 0.95);
+    padding: 20px;
+    border-radius: 20px;
+    border-top: 3px solid white;
+    border-bottom: 3px solid white;
+}
+
+#episode-description {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    color: white;
+    padding: 15px;
+    text-align: left;
+}
+
+#episode-description h1{
+    font-size: 35px;
+    font-weight: normal;
+    margin-bottom: 50px;
+    border-bottom: 3px solid white;
+
+}
+
+#episode-description p{
+    font-size: 15px;
+    font-weight: normal;
+    margin-bottom: 35px;
+    line-height: 1.5;
+}
+
+#episode-description p a img{
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100px;
+    padding: 10px;
+    border-radius: 100px;
+    background-color: royalblue;
+}
+
+
+#description-text {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 10px;
+    border-bottom: 1px solid white;
+    border-top: 1px solid white;
+}
+
+
+#back-button a {
+    display: flex;
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: #fff;
+    text-decoration: none;
+}
+
+#back-button a:hover {
+    text-decoration: underline;
+    color: #cb6ce6;
+}
+
+#footer-episode{
+    margin-top: 20px;
+    width: 100%;
+    padding: 20px;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+}
+
+
+
+/*---------------------------------------------------------*/
+/* Form Styles */
+/*---------------------------------------------------------*/
+
+.formwrapper {
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    font-size: 20px;
+}
+
+.form-field {
+    margin-bottom: 30px;
+}
+
+.register-link {
+    font-size: 16px;
+    padding: 10px;
+}
+
+.register-link a {
+    color: #cb6ce6;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+form {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.title {
+    margin-bottom: 30px;
+    font-weight: normal;
+
+}
+
+input[type='submit'] {
+    width: 100%;
+    background-color: #7532cd;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 20px 25px;
+}
+
+input[type='submit']:hover {
+    background-color: white;
+    color: black;
+}
+
+input[type='text'], input[type='password'], input[type='submit'] {
+    padding: 15px 20px;
+    font-size: 18px;
+    border-radius: 8px;
+}
+
+input[type='text'], input[type='password'] {
+    color: black;
+}
+
+#main-search {
+    width: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    border-top: 2px solid white;
+    padding: 20px;
+}
+
+#table-search {
+    width: 100%;
+    margin-top: 50px;
+    border-collapse: separate;
+    border-spacing: 0 30px;
+    margin-left: 100px;
+    margin-right: 100px;
+    border-radius: 10px;
+}
+
+
+/*---------------------------------------------------------*/
+/* Playlist Styles */
+/*---------------------------------------------------------*/
+
+
+
+#main-playlist {
+    border-top: 2px solid white;
+    padding: 20px;
+}
+
+#main-playlist table {
+    margin-top: 50px;
+    border-collapse: separate;
+    border-spacing: 0 30px;
+    margin-left: 100px;
+    margin-right: 100px;
+    border-radius: 10px;
+}
+
+#podcast-table{
+    background-color: rgb(65, 58, 67);
+    box-shadow: 0 0 15px rgb(255,255,255, 0.8);
+}
+
+
+th {
+    font-weight: normal;
+    text-align: left;
+    font-size: 18px;
+    padding-right: 40px;
+    border-bottom: 5px solid white;
+    padding-bottom: 5px;
+}
+
+
+td {
+    padding-right: 20px;
+    text-align: center;
+}
+
+#playlist-podcast-image{
+    justify-content: left;
+    max-width: 50%;
+    border-radius: 20px;
+    border: 3px solid white;
+    margin: 20px;
+ }
+
+#podcast-table td form{
+    background-color: transparent;
+}
+
+button {
+    padding: 5px 10px;
+    background-color: #642dad;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: white;
+    color: black;
+}
+
+#description_add{
+    background-color: transparent;
+}

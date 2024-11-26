@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Podcast Library</title>
+    <link
+      rel="stylesheet"
+      href="../static/css/main.css"
+    />
+</head>
+
+<body class="allow-scroll">
+    <div id="body">
+        <div id="content-2">
+            {% include'navbar.html' %}
+            <header id="header">
+              CS235 Podcast Library
+              <div class="copyright">&copy; Kavi Chand - kcha612 | Henry Song - cson299 | Natsuki - nkom215</div>
+            </header>
+            <div id = "welcome_statement"> Welcome to the CS235 Podcast Library, your gateway to a diverse collection of
+                podcasts. Explore, discover, and enjoy a curated selection of audio content across various
+                genres, all in one convenient place. Dive into your favorite topics or uncover new interests today!
+            </div>
+
+            <div id="podcast-grid">
+                {% for podcast in podcasts %}
+                  <div class="podcast-item">
+                     <a href="{{ url_for('description_bp.show_podcast_description', podcast_id=podcast['id']) }}">
+                         <img src="{{ podcast.image }}" alt="Podcast Image">
+                            <div class="podcast-info">
+                                <h3>{{ podcast.title }}</h3>
+                                <p>{{ podcast.categories | map(attribute='name') | join(', ') }}</p>
+                            </div>
+                     </a>
+                  </div>
+                {% endfor %}
+            </div>
+
+            <div id="pagination">
+                {% if prev_page %}
+                    <a href="{{ url_for('home_bp.home', page=prev_page) }}">Previous</a>
+                {% endif %}
+
+                {% for i in range(start_page, end_page + 1) %}
+                    {% if i == page %}
+                        <strong>{{ i }}</strong>
+                    {% else %}
+                        <a href="{{ url_for('home_bp.home', page=i) }}">{{ i }}</a>
+                    {% endif %}
+                {% endfor %}
+
+                {% if next_page %}
+                    <a href="{{ url_for('home_bp.home', page=next_page) }}">Next</a>
+                {% endif %}
+            </div>
+
+            <footer id="footer">
+              CS235 Kavi Chand - kcha612, Henry Song - cson299, Natsuki - nkom215
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Episode Description</title>
+    <link rel="stylesheet" href="../static/css/main.css" />
+</head>
+<body class="allow-scroll">
+    {% include 'navbar.html' %}
+    <div id="content-2">
+        <div id="container">
+            <main id="main-episode">
+                <div id="episode-description-page">
+                    <div id="episode-description-container">
+                        <div id="back-button">
+                            <a href="{{ url_for('description_bp.show_podcast_description', podcast_id=episode.podcast.id) }}">&#8592; Back to Podcast</a>
+                        </div>
+                        <div id="episode-description">
+                            <h1>{{ episode.title }}</h1>
+                            <p>
+                                <a href="{{ episode.audio }}" target="_blank">
+                                    <img src="../static/icons8-audio-100.png" alt="Play Audio"><i>Play Audio</i>
+                                </a>
+                            </p>
+                            <p><i>Audio Length:</i> {{ episode.length }} minutes</p>
+                            <p id="description-text"> {{ episode.description }} </p>
+                            <p><i>Publication Date:</i> {{ episode.pub_date }}</p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <footer id="footer-episode">
+            CS235 Kavi Chand - kcha612, Henry Song - cson299, Natsuki - nkom215
+        </footer>
+    </div>
+</body>
+</html>

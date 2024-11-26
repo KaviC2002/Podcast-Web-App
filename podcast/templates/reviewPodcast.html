@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link
+        rel="stylesheet"
+        href="../static/css/main.css"
+    />
+    <title>Review</title>
+</head>
+<body>
+    {% include'navbar.html' %}
+   <div style="clear:both">
+        <h2>Review {{podcast.title}}</h2>
+        <div class="form-wrapper">
+            <form action="{{handler_url}}" method="post">
+                {{form.podcast_id}} <!-- Need to include this hidden field as it tracks the podcast being reviewed. -->
+                {{form.csrf_token}} <!-- Need to include this token - Flask WTForms requires it. -->
+                <br>
+                <!-- section for rating -->
+                <div class ="form-field">{{form.rating.label}} (must be 0~10)</br>{{form.rating(size = 100, placeholder="type your rating", class="textarea", cols="50", rows="6", wrap="hard")}}
+                    {% if form.rating.errors %}
+                        <ul class="errors">
+        	            {% for error in form.rating.errors %}
+        		            <li>{{error}}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+                <!-- section for comment -->
+                <div class ="form-field">{{form.comment.label}} </br>{{form.comment(size = 100, placeholder="type your comment", class="textarea", cols="50", rows="6", wrap="hard")}}
+                    {% if form.comment.errors %}
+                        <ul class="errors">
+        	            {% for error in form.comment.errors %}
+        		            <li>{{error}}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+                {{ form.submit }}
+            </form>
+        </div>
+   </div>
+</body>
+</html>
